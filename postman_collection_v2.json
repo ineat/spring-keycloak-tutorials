@@ -1,0 +1,183 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Spring Keycloak Tutorials",
+		"_postman_id": "162c7aaa-a946-8e7c-4655-3e02be3c811d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "KEYCLOAK  request TOKEN for USER",
+			"request": {
+				"url": "http://localhost:8180/auth/realms/ineat-realm/protocol/openid-connect/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "1",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "ineat-user",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "ineat-web",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "038c7378-c478-4c5c-a616-c1ddf294cdb7",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Dont forget to change client-secret with yours"
+			},
+			"response": []
+		},
+		{
+			"name": "KEYCLOAK  request TOKEN for ADMIN",
+			"request": {
+				"url": "http://localhost:8180/auth/realms/ineat-realm/protocol/openid-connect/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "X-CSRF-TOKEN",
+						"value": "1",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "ineat-admin",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "ineat-web",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "038c7378-c478-4c5c-a616-c1ddf294cdb7",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Dont forget to change client-secret with yours"
+			},
+			"response": []
+		},
+		{
+			"name": "Request /user path",
+			"request": {
+				"url": "http://localhost:8080/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3bzc0OVZFNHZnbHpfeGRpUEM1aUlmZFdtamg4ZktnTHEzMzRuQmxxRDQ0In0.eyJqdGkiOiJlOTdmYWIyZC00N2EyLTQ5MWQtYWY5NC04ZDIxNjYyNTc5OTAiLCJleHAiOjE1MTI1OTg4NjYsIm5iZiI6MCwiaWF0IjoxNTEyNTk4NTY2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgxODAvYXV0aC9yZWFsbXMvaW5lYXQtcmVhbG0iLCJhdWQiOiJpbmVhdC13ZWIiLCJzdWIiOiJjZTI1OTc1OC01Y2Q2LTQzMzktYmY0MC1iYzllZTEzZTk0ZTkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJpbmVhdC13ZWIiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJkMGIyNTQwMC1jNWQwLTQzMWUtYmI1My0xZDhlM2YxNDNmNDEiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInByZWZlcnJlZF91c2VybmFtZSI6ImluZWF0LXVzZXIifQ.ojhOlyFDRSWpDyefgsPwv4N0CcQBDHIJwtVPTZIUQhxaZ0jvn5d3lQKWOtoeCwDXQ4woreh0jK3nBJjFmhdzTPCtZeDToMRMn1U-LgFpL8SXe6vXqXrVYE5_0kSv50Nx6dTPdA2Nzb5qwD445F5EVgweOEoyFAzIDakzInqNfbN745l998HLJTtpwp38fa6vKiZP2r6POoHt2jlNv6uKfYvQPUykgfPfrEY6b_j5z-NecH4aHfBrpGd27T2_xH5_oplIWUlJ_2P2o19ipt0uFIbLplCskODwGhXaQFIaeENUSDAxPBpuHM_9-rdHJRCqoUGX7Qvz8bqTBptP_Oh4AQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Dont forget to set Bearer value obtains from token request"
+			},
+			"response": []
+		},
+		{
+			"name": "Request /admin path",
+			"request": {
+				"url": "http://localhost:8080/admin",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3bzc0OVZFNHZnbHpfeGRpUEM1aUlmZFdtamg4ZktnTHEzMzRuQmxxRDQ0In0.eyJqdGkiOiJlOTdmYWIyZC00N2EyLTQ5MWQtYWY5NC04ZDIxNjYyNTc5OTAiLCJleHAiOjE1MTI1OTg4NjYsIm5iZiI6MCwiaWF0IjoxNTEyNTk4NTY2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgxODAvYXV0aC9yZWFsbXMvaW5lYXQtcmVhbG0iLCJhdWQiOiJpbmVhdC13ZWIiLCJzdWIiOiJjZTI1OTc1OC01Y2Q2LTQzMzktYmY0MC1iYzllZTEzZTk0ZTkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJpbmVhdC13ZWIiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJkMGIyNTQwMC1jNWQwLTQzMWUtYmI1My0xZDhlM2YxNDNmNDEiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInByZWZlcnJlZF91c2VybmFtZSI6ImluZWF0LXVzZXIifQ.ojhOlyFDRSWpDyefgsPwv4N0CcQBDHIJwtVPTZIUQhxaZ0jvn5d3lQKWOtoeCwDXQ4woreh0jK3nBJjFmhdzTPCtZeDToMRMn1U-LgFpL8SXe6vXqXrVYE5_0kSv50Nx6dTPdA2Nzb5qwD445F5EVgweOEoyFAzIDakzInqNfbN745l998HLJTtpwp38fa6vKiZP2r6POoHt2jlNv6uKfYvQPUykgfPfrEY6b_j5z-NecH4aHfBrpGd27T2_xH5_oplIWUlJ_2P2o19ipt0uFIbLplCskODwGhXaQFIaeENUSDAxPBpuHM_9-rdHJRCqoUGX7Qvz8bqTBptP_Oh4AQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Dont forget to set Bearer value obtains from token request"
+			},
+			"response": []
+		}
+	]
+}
