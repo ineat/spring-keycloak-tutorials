@@ -17,9 +17,13 @@ import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.preauth.x509.X509AuthenticationFilter;
 import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 
 public class SpringKeycloakTutorialsSecurityConfiguration {
 
@@ -73,6 +77,8 @@ public class SpringKeycloakTutorialsSecurityConfiguration {
                         .addFilterBefore(keycloakAuthenticationProcessingFilter(), X509AuthenticationFilter.class)
                         .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint())
 
+                    // add cors options
+                    .and().cors()
                     // delegate logout endpoint to spring security
 
                     .and()
@@ -86,6 +92,18 @@ public class SpringKeycloakTutorialsSecurityConfiguration {
                     .and().apply(new CommonSpringKeycloakTutorialsSecuritAdapter());
 
 
+        }
+
+
+        @Bean
+        public CorsConfigurationSource corsConfigurationSource() {
+            CorsConfiguration configuration = new CorsConfiguration();
+            configuration.setAllowedOrigins(Arrays.asList("*"));
+            configuration.setAllowedMethods(Arrays.asList(HttpMethod.OPTIONS.name(), "GET","POST"));
+            configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Authorization"));
+            UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+            source.registerCorsConfiguration("/**", configuration);
+            return source;
         }
     }
 
