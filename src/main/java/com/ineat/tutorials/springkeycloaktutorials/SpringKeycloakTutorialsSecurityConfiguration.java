@@ -1,5 +1,7 @@
 package com.ineat.tutorials.springkeycloaktutorials;
 
+import org.keycloak.adapters.KeycloakConfigResolver;
+import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
@@ -51,6 +53,14 @@ public class SpringKeycloakTutorialsSecurityConfiguration {
             auth.authenticationProvider(keycloakAuthenticationProvider);
         }
 
+        /**
+         * Required to handle spring boot configurations
+         * @return
+         */
+        @Bean
+        public KeycloakConfigResolver KeycloakConfigResolver() {
+            return new KeycloakSpringBootConfigResolver();
+        }
 
         /**
          * Configuration spécifique à keycloak (ajouts de filtres, etc)
